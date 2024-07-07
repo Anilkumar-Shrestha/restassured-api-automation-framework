@@ -2,6 +2,7 @@
 
 This project is created for simple RestAssured API framework so that anyone can download/fork to use with below details:
 
+ ```text
 ├───.ci
 │   └───deployments                                     // consists of DockerFile or Jenkins file
 ├───.github                                             // github pr template or github actions
@@ -49,6 +50,6 @@ This project is created for simple RestAssured API framework so that anyone can 
 │           └───json
 │               └───schema
 
-
+```
 
 This project uses : https://restful-booker.herokuapp.com/apidoc/index.html for all kind of requests sample.
