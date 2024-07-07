@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Rest assured api Suite">
+    <listeners>
+        <listener class-name="com.api.listeners.ExtentReportListener"/>
+        <listener class-name="com.api.listeners.AnnotationTransformer"/>
+    </listeners>
+    <test thread-count="5" name="Rest assured api TEST">
+        <classes>
+            <class name="com.api.auth.CreateToken"/>
+            <class name="com.api.getRequests.GetBookingIds"/>
+            <class name="com.api.postRequests.CreateBooking"/>
+            <class name="com.api.deleteRequests.DeleteBooking"/>
+            <class name="com.api.patchRequests.PartialUpdateBooking"/>
+            <class name="com.api.ping.HealthCheck"/>
+            <class name="com.api.putRequests.UpdateBooking"/>
+        </classes>
+    </test>
+</suite>
