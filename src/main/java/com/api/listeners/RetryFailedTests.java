@@ -1,18 +1,19 @@
 package com.api.listeners;
 
-import com.api.utils.PropertiesManager;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
+import static com.api.TestBase.testConfig;
+
 public class RetryFailedTests implements IRetryAnalyzer {
 
-  private final int maxRetry = Integer.parseInt(PropertiesManager.getProperty("retry_count"));
+  private final int maxRetry = testConfig.retryCount();
   private int count = 0;
 
   @Override
   public boolean retry(ITestResult result) {
     boolean value = false;
-    if (Boolean.parseBoolean(PropertiesManager.getProperty("retry_failed_tests"))) {
+    if (testConfig.retryFailedTests()) {
       value = count < maxRetry;
       count++;
     }

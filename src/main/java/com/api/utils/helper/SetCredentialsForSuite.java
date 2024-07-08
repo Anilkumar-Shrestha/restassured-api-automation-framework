@@ -1,8 +1,9 @@
 package com.api.utils.helper;
 
 
-import com.api.utils.PropertiesManager;
 import com.api.utils.aws.GetSecret;
+import com.api.utils.owner.UserCredentials;
+import org.aeonbits.owner.ConfigFactory;
 import org.json.simple.parser.ParseException;
 
 import static com.api.utils.helper.PasswordEncryptionDecryption.getDecryptString;
@@ -10,12 +11,13 @@ import static com.api.utils.loggerator.Logger.getLogger;
 
 public class SetCredentialsForSuite {
 
-    public static PropertiesManager credentialProperties;
+    static UserCredentials userCredentialConfig = ConfigFactory.create(UserCredentials.class);
 
     public static String user1Email;
     public static String user1Password;
 
-    private SetCredentialsForSuite(){
+
+    private SetCredentialsForSuite() {
 
     }
 
@@ -29,8 +31,8 @@ public class SetCredentialsForSuite {
 
     public static void setCredentialsFromLocalFile() throws ParseException {
         getLogger().info("Retrieving credentials from local user credentials properties file");
-        user1Email = PropertiesManager.getProperty("user1Email");
-        user1Password = getDecryptString(PropertiesManager.getProperty("user1Password"));
+        user1Email = userCredentialConfig.user1Email();
+        user1Password =  getDecryptString(userCredentialConfig.user1Password());
 
 
     }
