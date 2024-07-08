@@ -2,6 +2,7 @@
 
 This project is created for simple RestAssured API framework so that anyone can download/fork to use with below details:
 
+
  ```text
 ├───.ci
 │   └───deployments                                     // consists of DockerFile or Jenkins file
@@ -28,7 +29,7 @@ This project is created for simple RestAssured API framework so that anyone can 
 │   │   │               ├───helper
 │   │   │               ├───loggerator
 │   │   │               └───reporter
-│   │   │               └───PropertiesManager.java      // to load the config and other properties files
+│   │   │               └─── <del> PropertiesManager.java      // to load the config and other properties files </del>  This has been replaced by aeonbits owner
 │   │   └───TestBase.java                               // TestBase to do initial set up before suites are executed
 │   │   └───resources
 │   └───test
