@@ -5,15 +5,19 @@ import com.api.constants.FrameworkConstants;
 import com.api.models.builders.RequestBuilder;
 import com.api.models.pojo.booking.BookingBody;
 import com.api.models.pojo.booking.BookingDates;
+import com.api.models.pojo.booking.ResponseBookingCreated;
 import com.api.utils.faker.FakerUtils;
 import com.api.utils.reporter.ExtentLogger;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.File;
+import java.io.IOException;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
@@ -29,7 +33,7 @@ public final class CreateBooking extends TestBase {
     }
 
     @Test (priority = 1)
-    public void testCreateBooking() {
+    public  void testCreateBooking() {
 
         File schemaJsonFile = new File(FrameworkConstants.JSON_SCHEMA_PATH + File.separator + "createBookingJsonSchema.json");
 //        String postBody = """
@@ -88,7 +92,7 @@ public final class CreateBooking extends TestBase {
 
 
     @Test (priority = 2)
-    public void testJsonResponse() {
+    public void testJsonResponse() throws IOException {
        if( response.jsonPath().get("booking.firstname").equals(postBody.getFirstname()))
        {
            ExtentLogger.pass(response.jsonPath().get("booking.firstname") + " response firstname matches with the request first name");
@@ -97,6 +101,25 @@ public final class CreateBooking extends TestBase {
            Assert.fail();
        }
 
+
+
     }
+
+    @Test (priority = 3)
+    public void testJsonResponseUsingDeserializeResponseUsingPojo() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ResponseBookingCreated responseBookingCreated;
+        responseBookingCreated = objectMapper.readValue(response.getBody().asString(),ResponseBookingCreated.class);
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(postBody.getFirstname(),responseBookingCreated.getBooking().getFirstname());
+        softAssert.assertEquals(postBody.getLastname(),responseBookingCreated.getBooking().getLastname());
+        softAssert.assertEquals(postBody.getTotalprice(),responseBookingCreated.getBooking().getTotalprice());
+        softAssert.assertEquals(postBody.getAdditionalneeds(),responseBookingCreated.getBooking().getAdditionalneeds());
+        softAssert.assertEquals(postBody.getBookingdates(),responseBookingCreated.getBooking().getBookingdates());
+        softAssert.assertAll();
+    }
+
+
+
 
 }

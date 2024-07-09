@@ -30,6 +30,7 @@ public class ExtentReportListener implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.logFailureDetails(MESSAGE + result.getMethod().getMethodName() + "</b> is failed");
+        ExtentLogger.logFailureDetails(result.getThrowable().getMessage());
     }
 
     @Override
