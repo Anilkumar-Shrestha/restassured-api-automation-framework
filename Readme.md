@@ -2,6 +2,24 @@
 
 This project is created for simple RestAssured API framework so that anyone can download/fork to use with below details:
 
+### Frameworks Technology used:
+* [Java](https://www.java.com/en/) - programming language
+* [TestNG](https://github.com/cbeust/testng) - Testing framework
+* [Rest Assured](https://rest-assured.io/) - testing and validation of REST APIs.
+* [Maven](https://maven.apache.org/) - Build management tool
+* [ExtentReport](https://www.extentreports.com/docs/versions/5/java/index.html) - Reporting Framework
+* [Logback](https://logback.qos.ch/) - Logger
+* [Lombok](https://projectlombok.org/) - Autocode generator (getters, setters, constructors, builders)
+* [AWS-Secret Manager](https://aws.amazon.com/secrets-manager/) - Storing and Retrieving secrets/Credentials.
+* [Docker](https://www.docker.com/) - Packaging the Automation Framework for building and Executing.
+* [Aeonbits.owner](https://github.com/matteobaccan/owner) - OWNER, an API to ease Java property files usage.
+
+### Architecture diagram 
+
+![archi_diagram.png](src/main/resources/readme.files/archi_diagram.png)
+
+
+### Folder Structure definition
 
  ```text
 ├───.ci
@@ -53,4 +71,19 @@ This project is created for simple RestAssured API framework so that anyone can 
 
 ```
 
+
+
 This project uses : https://restful-booker.herokuapp.com/apidoc/index.html for all kind of requests sample.
+
+### Contributions
+Contributions to this project are welcome! If you have suggestions for improving existing framework, tests, adding new features, or enhancing the documentation, please feel free to submit a pull request.
+
+If you have any questions / suggestions / comments on the report, please feel free to reach me at
+- Email: <a href="mailto:nl.shrestha90@gmail.com?Subject=Restassured-api-automation-framework" target="_blank">`nl.shrestha90@gmail.com`</a>
+- LinkedIn: <a href="https://www.linkedin.com/in/anil-kumar-shrestha/" target="_blank">`Anil Kumar Shrestha`</a>
+
+---
+
+
+:star: repo if you like it.
+
